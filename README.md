@@ -36,3 +36,7 @@ The UR10e setup uses ROS 2. The ABB RobotStudio PDFs are included only as course
 - [RealSense ROS wrapper](https://github.com/realsenseai/realsense-ros)
 - [librealsense](https://github.com/realsenseai/librealsense)
 - [OpenCV](https://github.com/opencv/opencv)
+
+## Presentation: calibration and OpenCV
+
+See the [presentation guide](docs/presentation-calibration-opencv.md) for a suggested slide structure, calibration concepts, candidate vision pipeline, validation plan and technical references. This is preliminary: the authenticated group GitLab implementation has not yet been reviewed, so proposed methods are explicitly separated from verified project facts.
