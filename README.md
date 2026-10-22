@@ -39,4 +39,4 @@ The UR10e setup uses ROS 2. The ABB RobotStudio PDFs are included only as course
 
 ## Presentation: calibration and OpenCV
 
-See the [presentation guide](docs/presentation-calibration-opencv.md) for a suggested slide structure, calibration concepts, candidate vision pipeline, validation plan and technical references. This is preliminary: the authenticated group GitLab implementation has not yet been reviewed, so proposed methods are explicitly separated from verified project facts.
+See the [presentation guide](docs/presentation-calibration-opencv.md) for the verified ArUco/depth/SVD calibration procedure, the detection-to-motion interface, a five-slide outline and speaking notes. It is based on the uploaded GitLab archive plus camera_real_test.py and final_wall.py. The imported new_vision.py detector remains missing; its internal algorithm and the runtime calibration connection are not yet verified.
