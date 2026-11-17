@@ -2,6 +2,16 @@
 
 Course project workspace for ROS 2 Jazzy, MoveIt 2, a UR10e, and a RealSense D435i. The Group 08 `lego_stacking` ROS package has been imported from the uploaded GitLab source archive.
 
+## Physical demonstration
+
+The UR10e uses camera measurements to locate Duplo bricks, then picks them up and places them in rows to build a wall.
+
+| Approaching the bricks | Placing a brick | Final wall |
+| :---: | :---: | :---: |
+| ![UR10e gripper above loose Duplo bricks beside a calibration marker](docs/images/approach.jpg) | ![Robot working alongside a row of placed bricks](docs/images/placement.jpg) | ![Close-up of the gripper above the assembled Duplo wall](docs/images/wall.jpg) |
+
+*Photos from Group 8’s FRTN85 Applied Robotics presentation at Lund University.*
+
 ## Start here
 
 1. Follow [docs/setup-wsl.md](docs/setup-wsl.md) on your own Windows/WSL Ubuntu 24.04 machine.
