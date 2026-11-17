@@ -1,10 +1,8 @@
-# Applied Robots · UR10e LEGO stacking
+# Building a Duplo wall with a UR10e
 
-Course project workspace for ROS 2 Jazzy, MoveIt 2, a UR10e, and a RealSense D435i. The Group 08 `lego_stacking` ROS package has been imported from the uploaded GitLab source archive.
+For the FRTN85 Applied Robotics course at Lund University, our team built a robot that turns a pile of loose Duplo bricks into a wall. A RealSense D435i camera locates the bricks, and a UR10e arm picks them up, aligns them, and stacks them according to a wall plan.
 
 ## Physical demonstration
-
-The UR10e uses camera measurements to locate Duplo bricks, then picks them up and places them in rows to build a wall.
 
 | Approaching the bricks | Placing a brick | Final wall |
 | :---: | :---: | :---: |
@@ -12,47 +10,17 @@ The UR10e uses camera measurements to locate Duplo bricks, then picks them up an
 
 *Photos from Group 8’s FRTN85 Applied Robotics presentation at Lund University.*
 
-## Start here
+## How it works
 
-1. Follow [docs/setup-wsl.md](docs/setup-wsl.md) on your own Windows/WSL Ubuntu 24.04 machine.
-2. Follow [docs/work-session.md](docs/work-session.md) to run the simulator, driver, planner, camera, and project code.
-3. See [INSTALL.md](INSTALL.md) and [EXECUTE.md](EXECUTE.md) for the imported project instructions. The source package is in [ros2_ws/src/lego_stacking/](ros2_ws/src/lego_stacking/).
+1. **Locate the bricks.** OpenCV uses color, contours, and studs to estimate each brick’s size and orientation. ArUco calibration maps camera measurements into the robot’s coordinate system.
+2. **Plan the wall.** A greedy planner sorts the available bricks by length and assigns them positions across three layers.
+3. **Align and stack.** MoveIt 2 plans the arm motions. The gripper picks up each brick, aligns it, then grasps it again for placement. Small alignment errors can accumulate as the wall grows.
 
-## Layout
+## Code and setup
 
-| Path | Purpose |
-| --- | --- |
-| `docs/` | Local setup, workflow, and source links |
-| `course-materials/teacher/` | Original teacher instructions |
-| `course-materials/robotstudio-abb/` | Earlier ABB RobotStudio course references; separate from UR10e setup |
-| `ros2_ws/src/` | Imported Group 08 ROS package source |
+- [ROS 2 package](ros2_ws/src/lego_stacking/) · [Brick detection](ros2_ws/src/lego_stacking/lego_stacking/new_vision.py) · [Wall assembly](ros2_ws/src/lego_stacking/lego_stacking/final_wall.py)
+- [Installation](INSTALL.md) · [Lab execution guide](EXECUTE.md) · [Camera calibration notes](docs/presentation-calibration-opencv.md)
 
-The UR10e setup uses ROS 2. The ABB RobotStudio PDFs are included only as course references; RobotStudio is not an installation prerequisite for this project. Do not commit passwords, robot credentials, camera recordings, or calibration files containing private lab details.
+Some planner commands listed in `setup.py` reference modules absent from this snapshot.
 
-## Status
-
-- [x] Repository skeleton and source documents organized
-- [ ] Ubuntu 24.04 / ROS 2 Jazzy installed on Olivia's computer
-- [ ] MoveIt, UR driver, simulator, RealSense, OpenCV verified there
-- [x] Group 08 project package imported from GitLab archive
-- [ ] Simulator session verified
-- [ ] Real robot procedure obtained from Sebastiano
-
-## References
-
-- [ROS 2 Jazzy installation](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html)
-- [MoveIt 2](https://moveit.picknik.ai/main/index.html)
-- [Universal Robots ROS 2 driver](https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver)
-- [RealSense ROS wrapper](https://github.com/realsenseai/realsense-ros)
-- [librealsense](https://github.com/realsenseai/librealsense)
-- [OpenCV](https://github.com/opencv/opencv)
-
-## Presentation: calibration and OpenCV
-
-See the [presentation guide](docs/presentation-calibration-opencv.md) for the verified ArUco/depth/SVD calibration procedure, the detection-to-motion interface, a five-slide outline and speaking notes. It is based on the uploaded GitLab archive plus camera_real_test.py and final_wall.py. The uploaded source now includes `new_vision.py`; the older presentation notes predate this import. Robot execution and the runtime calibration connection have not been verified here.
-
-## Imported source and credits
-
-Source: [LTH GitLab Group 08](https://gitlab.control.lth.se/regler/frtn85-frtn80-applied-robotics/projects-ht2026/group-08), archive commit `cbd06c030ef5e1a17604df9746695f6dabca4fa9` (29 October 2026). Original group credits and Git configuration are preserved in [docs/gitlab-source/](docs/gitlab-source/).
-
-The package was imported without code changes. Its `setup.py` lists planner entry points whose modules are absent from the supplied archive; this import does not establish that the package builds or runs on the robot.
+[Group 8 contributors](docs/gitlab-source/README.md) · [Original LTH GitLab project](https://gitlab.control.lth.se/regler/frtn85-frtn80-applied-robotics/projects-ht2026/group-08)
