@@ -1,12 +1,12 @@
 # Applied Robots · UR10e LEGO stacking
 
-Course project workspace for ROS 2 Jazzy, MoveIt 2, a UR10e, and a RealSense D435i. The starter `lego_stacking` ROS package is supplied on the lab laptop and **has not yet been added**.
+Course project workspace for ROS 2 Jazzy, MoveIt 2, a UR10e, and a RealSense D435i. The Group 08 `lego_stacking` ROS package has been imported from the uploaded GitLab source archive.
 
 ## Start here
 
 1. Follow [docs/setup-wsl.md](docs/setup-wsl.md) on your own Windows/WSL Ubuntu 24.04 machine.
 2. Follow [docs/work-session.md](docs/work-session.md) to run the simulator, driver, planner, camera, and project code.
-3. Copy the teacher's `~/lego_stacking_ws/src/lego_stacking/` folder into `ros2_ws/src/lego_stacking/` when it becomes available; see [docs/import-starter.md](docs/import-starter.md).
+3. See [INSTALL.md](INSTALL.md) and [EXECUTE.md](EXECUTE.md) for the imported project instructions. The source package is in [ros2_ws/src/lego_stacking/](ros2_ws/src/lego_stacking/).
 
 ## Layout
 
@@ -15,7 +15,7 @@ Course project workspace for ROS 2 Jazzy, MoveIt 2, a UR10e, and a RealSense D43
 | `docs/` | Local setup, workflow, and source links |
 | `course-materials/teacher/` | Original teacher instructions |
 | `course-materials/robotstudio-abb/` | Earlier ABB RobotStudio course references; separate from UR10e setup |
-| `ros2_ws/src/` | Future ROS package source |
+| `ros2_ws/src/` | Imported Group 08 ROS package source |
 
 The UR10e setup uses ROS 2. The ABB RobotStudio PDFs are included only as course references; RobotStudio is not an installation prerequisite for this project. Do not commit passwords, robot credentials, camera recordings, or calibration files containing private lab details.
 
@@ -24,7 +24,7 @@ The UR10e setup uses ROS 2. The ABB RobotStudio PDFs are included only as course
 - [x] Repository skeleton and source documents organized
 - [ ] Ubuntu 24.04 / ROS 2 Jazzy installed on Olivia's computer
 - [ ] MoveIt, UR driver, simulator, RealSense, OpenCV verified there
-- [ ] Teacher's starter package imported from lab laptop
+- [x] Group 08 project package imported from GitLab archive
 - [ ] Simulator session verified
 - [ ] Real robot procedure obtained from Sebastiano
 
@@ -39,4 +39,10 @@ The UR10e setup uses ROS 2. The ABB RobotStudio PDFs are included only as course
 
 ## Presentation: calibration and OpenCV
 
-See the [presentation guide](docs/presentation-calibration-opencv.md) for the verified ArUco/depth/SVD calibration procedure, the detection-to-motion interface, a five-slide outline and speaking notes. It is based on the uploaded GitLab archive plus camera_real_test.py and final_wall.py. The imported new_vision.py detector remains missing; its internal algorithm and the runtime calibration connection are not yet verified.
+See the [presentation guide](docs/presentation-calibration-opencv.md) for the verified ArUco/depth/SVD calibration procedure, the detection-to-motion interface, a five-slide outline and speaking notes. It is based on the uploaded GitLab archive plus camera_real_test.py and final_wall.py. The uploaded source now includes `new_vision.py`; the older presentation notes predate this import. Robot execution and the runtime calibration connection have not been verified here.
+
+## Imported source and credits
+
+Source: [LTH GitLab Group 08](https://gitlab.control.lth.se/regler/frtn85-frtn80-applied-robotics/projects-ht2026/group-08), archive commit `cbd06c030ef5e1a17604df9746695f6dabca4fa9` (29 October 2026). Original group credits and Git configuration are preserved in [docs/gitlab-source/](docs/gitlab-source/).
+
+The package was imported without code changes. Its `setup.py` lists planner entry points whose modules are absent from the supplied archive; this import does not establish that the package builds or runs on the robot.
